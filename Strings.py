@@ -11,68 +11,68 @@ class ConcatStrings(Test):
 
         # Make sure the strings are *not* interned
         s = join(map(str,range(100)))
-        t = join(map(str,range(1,101)))
+        x = join(map(str,range(1,101)))
 
         for i in xrange(self.rounds):
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = x + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
     def calibrate(self):
 
@@ -80,7 +80,65 @@ class ConcatStrings(Test):
         t = join(map(str,range(1,101)))
 
         for i in xrange(self.rounds):
-            pass
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
 
 
 class CompareStrings(Test):

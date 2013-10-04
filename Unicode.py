@@ -16,68 +16,68 @@ class ConcatUnicode(Test):
 
         # Make sure the strings are *not* interned
         s = unicode(join(map(str,range(100))))
-        t = unicode(join(map(str,range(1,101))))
+        x = unicode(join(map(str,range(1,101))))
 
         for i in xrange(self.rounds):
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = x + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
-            t + s
-            t + s
-            t + s
-            t + s
-            t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
+            t = t + s
 
     def calibrate(self):
 
@@ -85,7 +85,65 @@ class ConcatUnicode(Test):
         t = unicode(join(map(str,range(1,101))))
 
         for i in xrange(self.rounds):
-            pass
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
+
+            x = t
+            x = t
+            x = t
+            x = t
+            x = t
 
 
 class CompareUnicode(Test):
