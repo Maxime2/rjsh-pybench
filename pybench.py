@@ -15,6 +15,7 @@
 __copyright__ = """\
 Copyright (c), 1997-2006, Marc-Andre Lemburg (mal@lemburg.com)
 Copyright (c), 2000-2006, eGenix.com Software GmbH (info@egenix.com)
+Copyright (c), 2013, Maxim Zakharov
 
                    All Rights Reserved.
 
@@ -290,28 +291,34 @@ class Benchmark:
             tests = self.tests.items()
             tests.sort()
             totalmintime = 0
+            totalavgtime = 0
             for name,t in tests:
                 mintime,avg,op_avg,ov_avg = t.stat()
                 totalmintime += mintime
+                totalavgtime += avg
                 print '%30s: %9.2f ms %9.2f ms %6.2f us  %6.2f' % \
                       (name,mintime*1000.0,avg*1000.0,op_avg*1000000.0,ov_avg*1000.0)
             print '-'*77
             print '%30s: %9.2f ms' % \
                   ('Notional minimum round time', totalmintime * 1000.0)
+            print '%30s: %9.2f ms' % \
+                  ('Average round time', totalavgtime * 1000.0)
 
         else:
             print 'Comparing with: %s (rounds=%i, warp=%i)' % \
                   (compare_to.name,compare_to.rounds,compare_to.warp)
-            print '%-30s      min run     cmp run     avg run      diff' % \
+            print '%-30s      min run     cmp run     diff     avg run     cmp run     diff' % \
                   'Tests:'
-            print '-'*77
+            print '-'*99
             tests = self.tests.items()
             tests.sort()
             compatible = 1
             totalmintime = other_totalmintime = 0
+            totalavgtime = other_totalavgtime = 0
             for name, t in tests:
                 mintime, avg, op_avg, ov_avg = t.stat()
                 totalmintime += mintime
+                totalavgtime += avg
                 try:
                     other = compare_to.tests[name]
                 except KeyError:
@@ -320,30 +327,42 @@ class Benchmark:
                    other.operations == t.operations:
                     mintime1, avg1, op_avg1, ov_avg1 = other.stat()
                     other_totalmintime += mintime1
+                    other_totalavgtime += avg1
                     diff = ((mintime*self.warp)/(mintime1*other.warp) - 1.0)*100.0
+                    diff1 = ((avg*self.warp)/(avg1*other.warp) - 1.0)*100.0
                     if hidenoise and abs(qop_avg) < 10:
                         diff = ''
+                        diff1 = ''
                     else:
                         diff = '%+7.2f%%' % diff
+                        diff1 = '%+7.2f%%' % diff1
                 else:
                     qavg, diff = 'n/a', 'n/a'
                     compatible = 0
-                print '%30s: %8.2f ms %8.2f ms %8.2f ms  %8s' % \
-                      (name,mintime*1000.0,mintime1*1000.0 * compare_to.warp/self.warp, avg*1000.0,diff)
-            print '-'*77
+                print '%30s: %8.2f ms %8.2f ms %8s %8.2f ms %8.2f ms %8s' % \
+                      (name,mintime*1000.0,mintime1*1000.0 * compare_to.warp/self.warp, diff, \
+                           avg*1000.0, avg1*1000.0 * compare_to.warp/self.warp, diff1)
+            print '-'*99
             #
             # Summarise test results
             #
             if compatible and compare_to.roundtime > 0 and \
                compare_to.version == self.version:
-                print '%30s: %8.2f ms %8.2f ms              %+7.2f%%' % \
+                print '%30s: %8.2f ms %8.2f ms %+7.2f%%' % \
                       ('Notional minimum round time', totalmintime * 1000.0,
                       other_totalmintime * 1000.0 * compare_to.warp/self.warp,
                        ((totalmintime*self.warp)/
                         (other_totalmintime*compare_to.warp)-1.0)*100.0)
+                print '%30s: %8.2f ms %8.2f ms %+7.2f%%' % \
+                      ('Average round time', totalavgtime * 1000.0,
+                      other_totalavgtime * 1000.0 * compare_to.warp/self.warp,
+                       ((totalavgtime*self.warp)/
+                        (other_totalavgtime*compare_to.warp)-1.0)*100.0)
             else:
-                print '%30s: %9.2f ms                    n/a' % \
+                print '%30s: %9.2f ms          n/a' % \
                       ('Notional minimum round time', totalmintime * 1000.0)
+                print '%30s: %9.2f ms          n/a' % \
+                      ('Average round time', totalavgtime * 1000.0)
         print
 
 def print_machine():
